@@ -14,10 +14,13 @@
         android:layout_centerHorizontal="true"
         android:padding="16dp" />
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/mapFragment"
         android:name="com.google.android.gms.maps.MapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/locationTextView" />
+        android:layout_below="@id/locationTextView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"/>
 </RelativeLayout>

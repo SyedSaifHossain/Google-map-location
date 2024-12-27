@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
     private val handler = Handler()
 
     companion object {
-        private val LOCATION_PERMISSION_CODE = 1
+        private const val LOCATION_PERMISSION_CODE = 1
     }
     private val updateLocationRunnable = object : Runnable {
         override fun run() {
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
     }
 
     override fun onMapReady(map: GoogleMap) {
-        googleMap = map ?: return
+        googleMap = map
 
         googleMap.uiSettings.isZoomControlsEnabled=true
 
@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
             ) != PackageManager.PERMISSION_GRANTED
         ) {
 
-            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                 LOCATION_PERMISSION_CODE)
             return
         }
@@ -106,7 +106,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
     }
 
     private fun placeMakerOnMap(currentLatLong: LatLng) {
-        var makerOption = MarkerOptions().position(currentLatLong)
+        val makerOption = MarkerOptions().position(currentLatLong)
         makerOption.title("$currentLatLong")
         googleMap.addMarker(makerOption)
     }
